@@ -1,0 +1,26 @@
+name: Build and Deploy Next.js App
+
+on:
+  push:
+    branches: [ "qa" ]  # Change "qa" to your branch name(s)
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 16
+        uses: actions/setup-node@v4
+        with:
+          node-version: 16  # Adjust Node.js version as needed
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Next.js app
+        run: npm run build  # Replace with your build command (e.g., yarn build)
+
+      - name: Deploy (replace with your deployment action)
+        uses: actions/deploy-with-pusher@v5  # Replace with your deployment action
+        with:
+          # ... your deployment provider specific configuration ...
